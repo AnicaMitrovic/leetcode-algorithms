@@ -1,4 +1,9 @@
-
+/* Return the maximum number of four-person groups you can assign on the cinema seats. 
+A four-person group occupies four adjacent seats in one single row. Seats across an aisle (such as [3,C] and [3,D]) 
+are not considered to be adjacent, but there is an exceptional case on which an aisle split a four-person group, 
+in that case, the aisle split a four-person group in the middle, which means to have two people on each side. */
+using System;
+class Solution {
         public int solution(int N, string S)
         {
             string[] reservedSeatsString = S.Split(' '); 
@@ -71,19 +76,19 @@
 
                         char[] freeSeatsInRow = completeRow.Except(values).ToArray();
 
-                        if(left.All(x => completeRow.Contains(x)))
+                        if(left.All(x => freeSeatsInRow.Contains(x)))
                         {
                             numberOfFamilies++;
                             continue;
                         }
 
-                        if (middle.All(x => completeRow.Contains(x)))
+                        if (middle.All(x => freeSeatsInRow.Contains(x)))
                         {
                             numberOfFamilies++;
                             continue;
                         }
 
-                        if (right.All(x => completeRow.Contains(x)))
+                        if (right.All(x => freeSeatsInRow.Contains(x)))
                         {
                             numberOfFamilies++;
                             continue;
@@ -94,3 +99,4 @@
 
             return numberOfFamilies;
         }
+}
