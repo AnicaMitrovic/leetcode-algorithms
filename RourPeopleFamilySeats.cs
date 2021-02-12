@@ -2,9 +2,6 @@
         public int solution(int N, string S)
         {
             string[] reservedSeatsString = S.Split(' '); 
-            int reservations = reservedSeatsString.Length;
-
-            List<int[]> reservedSeats = new List<int[]>();
 
             // Contains reserved seats in every row
             Dictionary<int, List<char>> reservedSeatsInRow = new Dictionary<int, List<char>>();
@@ -72,13 +69,7 @@
                         char[] middle = { 'D', 'E', 'F', 'G' };
                         char[] right = { 'F', 'G', 'H', 'J' };
 
-                        completeRow = completeRow.Except(values).ToArray();
-
-                        if (completeRow == left || completeRow == middle || completeRow == right)
-                        {
-                            numberOfFamilies++;
-                            continue;
-                        }
+                        char[] freeSeatsInRow = completeRow.Except(values).ToArray();
 
                         if(left.All(x => completeRow.Contains(x)))
                         {
