@@ -9,12 +9,12 @@ class Solution {
     public int solution(int[] A) {
         int n = A.Length;
         if(n == 0){
-            return 0;
+            return false;
         }
 
         // Check if there are even elements in array
         if(n % 2 != 0){
-            return 0;
+            return false;
         }
 
         int countEven = 0;
